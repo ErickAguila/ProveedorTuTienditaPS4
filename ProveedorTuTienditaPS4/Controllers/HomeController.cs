@@ -28,5 +28,11 @@ namespace ProveedorTuTienditaPS4.Controllers
         {
             return View("Index");
         }
+
+        [HttpPost]
+        public ActionResult GuardarPack(PackViewModels model)
+        {
+            return View(model);
+        }
     }
 }
