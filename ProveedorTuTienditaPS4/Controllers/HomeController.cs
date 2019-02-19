@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ProveedorTuTienditaPS4.Models.Entity;
 
 namespace ProveedorTuTienditaPS4.Controllers
 {
     public class HomeController : Controller
     {
+        tutienditaps4_Entities modelo = new tutienditaps4_Entities();
+
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-
+            
             return View();
         }
 
@@ -26,7 +29,22 @@ namespace ProveedorTuTienditaPS4.Controllers
         [HttpPost]
         public ActionResult Login(LoginViewModels model)
         {
-            return View("Index");
+            try
+            {
+                var respuesta = modelo.Usuario.Where(c => c.emailUsuario == model.Username && c.password == model.Password).FirstOrDefault();
+                if (respuesta != null)
+                {
+                    return View("Index");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         [HttpPost]

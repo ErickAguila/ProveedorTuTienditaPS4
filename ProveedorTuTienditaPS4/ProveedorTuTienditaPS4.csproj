@@ -82,6 +82,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -242,6 +243,57 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
+    <Compile Include="Models\Entity\AnunciarPago.cs">
+      <DependentUpon>tutienditaps4_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Pack.cs">
+      <DependentUpon>tutienditaps4_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\PackJuego.cs">
+      <DependentUpon>tutienditaps4_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\PackOferta.cs">
+      <DependentUpon>tutienditaps4_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\ProveedorVenta.cs">
+      <DependentUpon>tutienditaps4_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\ProveedorVentaEstado.cs">
+      <DependentUpon>tutienditaps4_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\sysdiagrams.cs">
+      <DependentUpon>tutienditaps4_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\tutienditaps4_DB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tutienditaps4_DB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\tutienditaps4_DB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tutienditaps4_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\tutienditaps4_DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tutienditaps4_DB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Usuario.cs">
+      <DependentUpon>tutienditaps4_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\UsuarioPerfil.cs">
+      <DependentUpon>tutienditaps4_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\UsuarioPermisoSitio.cs">
+      <DependentUpon>tutienditaps4_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Venta.cs">
+      <DependentUpon>tutienditaps4_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\VentaEstado.cs">
+      <DependentUpon>tutienditaps4_DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ViewModels\LoginViewModels.cs" />
@@ -477,6 +529,16 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\Entity\tutienditaps4_DB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>tutienditaps4_DB.edmx</DependentUpon>
+      <LastGenOutput>tutienditaps4_DB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Entity\tutienditaps4_DB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>tutienditaps4_DB.edmx</DependentUpon>
+      <LastGenOutput>tutienditaps4_DB.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -690,6 +752,13 @@
     <Content Include="Content\Dasboard\vendors\font-awesome\scss\_screen-reader.scss" />
     <Content Include="Content\Dasboard\vendors\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\Dasboard\vendors\font-awesome\scss\_variables.scss" />
+    <EntityDeploy Include="Models\Entity\tutienditaps4_DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>tutienditaps4_DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Entity\tutienditaps4_DB.edmx.diagram">
+      <DependentUpon>tutienditaps4_DB.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\TuTienditaPs4.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -735,6 +804,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tutienditaps4_desadbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AnunciarPago">
+    <Key>
+      <PropertyRef Name="idAnunciarPago" />
+    </Key>
+    <Property Name="idAnunciarPago" Type="Int32" Nullable="false" />
+    <Property Name="adjunto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="idPack" Type="Int32" />
+    <Property Name="fechaCreacion" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Pack" Relationship="Self.FK_AnunciarPago_Pack" FromRole="AnunciarPago" ToRole="Pack" />
+  </EntityType>
+  <EntityType Name="Pack">
+    <Key>
+      <PropertyRef Name="idPack" />
+    </Key>
+    <Property Name="idPack" Type="Int32" Nullable="false" />
+    <Property Name="nombrePack" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="precio" Type="Int32" />
+    <Property Name="fechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="vigente" Type="Boolean" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AnunciarPago" Relationship="Self.FK_AnunciarPago_Pack" FromRole="Pack" ToRole="AnunciarPago" />
+    <NavigationProperty Name="PackJuego" Relationship="Self.FK_PackJuego_Pack" FromRole="Pack" ToRole="PackJuego" />
+    <NavigationProperty Name="PackOferta" Relationship="Self.FK_PackOferta_Pack" FromRole="Pack" ToRole="PackOferta" />
+    <NavigationProperty Name="Venta" Relationship="Self.FK_Venta_Pack" FromRole="Pack" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="PackJuego">
+    <Key>
+      <PropertyRef Name="idPackJuego" />
+    </Key>
+    <Property Name="idPackJuego" Type="Int32" Nullable="false" />
+    <Property Name="idPack" Type="Int32" />
+    <Property Name="nombreJuego" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="vigente" Type="Boolean" />
+    <Property Name="estrella" Type="Int32" />
+    <NavigationProperty Name="Pack" Relationship="Self.FK_PackJuego_Pack" FromRole="PackJuego" ToRole="Pack" />
+  </EntityType>
+  <EntityType Name="PackOferta">
+    <Key>
+      <PropertyRef Name="idPackOferta" />
+    </Key>
+    <Property Name="idPackOferta" Type="Int32" Nullable="false" />
+    <Property Name="idPack" Type="Int32" />
+    <NavigationProperty Name="Pack" Relationship="Self.FK_PackOferta_Pack" FromRole="PackOferta" ToRole="Pack" />
+  </EntityType>
+  <EntityType Name="ProveedorVenta">
+    <Key>
+      <PropertyRef Name="idProveedorVenta" />
+    </Key>
+    <Property Name="idProveedorVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUsuario" Type="Int32" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="USD" Type="Double" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="idProveedorVentaEstado" Type="Int32" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ProveedorVentaEstado" Relationship="Self.FK_ProveedorVenta_ProveedorVentaEstado" FromRole="ProveedorVenta" ToRole="ProveedorVentaEstado" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_ProveedorVenta_Usuario" FromRole="ProveedorVenta" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="ProveedorVentaEstado">
+    <Key>
+      <PropertyRef Name="idProveedorVentaEstado" />
+    </Key>
+    <Property Name="idProveedorVentaEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreEstado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="vigente" Type="Boolean" />
+    <NavigationProperty Name="ProveedorVenta" Relationship="Self.FK_ProveedorVenta_ProveedorVentaEstado" FromRole="ProveedorVentaEstado" ToRole="ProveedorVenta" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellidoUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="emailUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="vigente" Type="Boolean" />
+    <Property Name="idUsuarioPerfil" Type="Int32" />
+    <Property Name="idUsuarioPermisoSitio" Type="Int32" />
+    <NavigationProperty Name="ProveedorVenta" Relationship="Self.FK_ProveedorVenta_Usuario" FromRole="Usuario" ToRole="ProveedorVenta" />
+    <NavigationProperty Name="UsuarioPerfil" Relationship="Self.FK_Usuario_UsuarioPerfil" FromRole="Usuario" ToRole="UsuarioPerfil" />
+    <NavigationProperty Name="UsuarioPermisoSitio" Relationship="Self.FK_Usuario_UsuarioPermisoSitio" FromRole="Usuario" ToRole="UsuarioPermisoSitio" />
+    <NavigationProperty Name="Venta" Relationship="Self.FK_Venta_Usuario" FromRole="Usuario" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="UsuarioPerfil">
+    <Key>
+      <PropertyRef Name="idUsuarioPerfil" />
+    </Key>
+    <Property Name="idUsuarioPerfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="vigente" Type="Boolean" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_UsuarioPerfil" FromRole="UsuarioPerfil" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="UsuarioPermisoSitio">
+    <Key>
+      <PropertyRef Name="idUsuarioPermisoSitio" />
+    </Key>
+    <Property Name="idUsuarioPermisoSitio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreSitio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="vigente" Type="Boolean" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_UsuarioPermisoSitio" FromRole="UsuarioPermisoSitio" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Venta">
+    <Key>
+      <PropertyRef Name="idVenta" />
+    </Key>
+    <Property Name="idVenta" Type="Int32" Nullable="false" />
+    <Property Name="fechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="total" Type="Int32" />
+    <Property Name="idPack" Type="Int32" />
+    <Property Name="idUsuario" Type="Int32" />
+    <Property Name="idVentaEstado" Type="Int32" />
+    <NavigationProperty Name="Pack" Relationship="Self.FK_Venta_Pack" FromRole="Venta" ToRole="Pack" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Venta_Usuario" FromRole="Venta" ToRole="Usuario" />
+    <NavigationProperty Name="VentaEstado" Relationship="Self.FK_Venta_VentaEstado" FromRole="Venta" ToRole="VentaEstado" />
+  </EntityType>
+  <EntityType Name="VentaEstado">
+    <Key>
+      <PropertyRef Name="idVentaEstado" />
+    </Key>
+    <Property Name="idVentaEstado" Type="Int32" Nullable="false" />
+    <Property Name="nombreEstado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="vigente" Type="Boolean" />
+    <NavigationProperty Name="Venta" Relationship="Self.FK_Venta_VentaEstado" FromRole="VentaEstado" ToRole="Venta" />
+  </EntityType>
+  <Association Name="FK_AnunciarPago_Pack">
+    <End Role="Pack" Type="Self.Pack" Multiplicity="0..1" />
+    <End Role="AnunciarPago" Type="Self.AnunciarPago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pack">
+        <PropertyRef Name="idPack" />
+      </Principal>
+      <Dependent Role="AnunciarPago">
+        <PropertyRef Name="idPack" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PackJuego_Pack">
+    <End Role="Pack" Type="Self.Pack" Multiplicity="0..1" />
+    <End Role="PackJuego" Type="Self.PackJuego" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pack">
+        <PropertyRef Name="idPack" />
+      </Principal>
+      <Dependent Role="PackJuego">
+        <PropertyRef Name="idPack" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PackOferta_Pack">
+    <End Role="Pack" Type="Self.Pack" Multiplicity="0..1" />
+    <End Role="PackOferta" Type="Self.PackOferta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pack">
+        <PropertyRef Name="idPack" />
+      </Principal>
+      <Dependent Role="PackOferta">
+        <PropertyRef Name="idPack" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Venta_Pack">
+    <End Role="Pack" Type="Self.Pack" Multiplicity="0..1" />
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pack">
+        <PropertyRef Name="idPack" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="idPack" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProveedorVenta_ProveedorVentaEstado">
+    <End Role="ProveedorVentaEstado" Type="Self.ProveedorVentaEstado" Multiplicity="0..1" />
+    <End Role="ProveedorVenta" Type="Self.ProveedorVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProveedorVentaEstado">
+        <PropertyRef Name="idProveedorVentaEstado" />
+      </Principal>
+      <Dependent Role="ProveedorVenta">
+        <PropertyRef Name="idProveedorVentaEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProveedorVenta_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="ProveedorVenta" Type="Self.ProveedorVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="ProveedorVenta">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_UsuarioPerfil">
+    <End Role="UsuarioPerfil" Type="Self.UsuarioPerfil" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioPerfil">
+        <PropertyRef Name="idUsuarioPerfil" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="idUsuarioPerfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_UsuarioPermisoSitio">
+    <End Role="UsuarioPermisoSitio" Type="Self.UsuarioPermisoSitio" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsuarioPermisoSitio">
+        <PropertyRef Name="idUsuarioPermisoSitio" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="idUsuarioPermisoSitio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Venta_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Venta_VentaEstado">
+    <End Role="VentaEstado" Type="Self.VentaEstado" Multiplicity="0..1" />
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VentaEstado">
+        <PropertyRef Name="idVentaEstado" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="idVentaEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="tutienditaps4_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AnunciarPago" EntityType="Self.AnunciarPago" />
+    <EntitySet Name="Pack" EntityType="Self.Pack" />
+    <EntitySet Name="PackJuego" EntityType="Self.PackJuego" />
+    <EntitySet Name="PackOferta" EntityType="Self.PackOferta" />
+    <EntitySet Name="ProveedorVenta" EntityType="Self.ProveedorVenta" />
+    <EntitySet Name="ProveedorVentaEstado" EntityType="Self.ProveedorVentaEstado" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <EntitySet Name="UsuarioPerfil" EntityType="Self.UsuarioPerfil" />
+    <EntitySet Name="UsuarioPermisoSitio" EntityType="Self.UsuarioPermisoSitio" />
+    <EntitySet Name="Venta" EntityType="Self.Venta" />
+    <EntitySet Name="VentaEstado" EntityType="Self.VentaEstado" />
+    <AssociationSet Name="FK_AnunciarPago_Pack" Association="Self.FK_AnunciarPago_Pack">
+      <End Role="Pack" EntitySet="Pack" />
+      <End Role="AnunciarPago" EntitySet="AnunciarPago" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PackJuego_Pack" Association="Self.FK_PackJuego_Pack">
+      <End Role="Pack" EntitySet="Pack" />
+      <End Role="PackJuego" EntitySet="PackJuego" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PackOferta_Pack" Association="Self.FK_PackOferta_Pack">
+      <End Role="Pack" EntitySet="Pack" />
+      <End Role="PackOferta" EntitySet="PackOferta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Venta_Pack" Association="Self.FK_Venta_Pack">
+      <End Role="Pack" EntitySet="Pack" />
+      <End Role="Venta" EntitySet="Venta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProveedorVenta_ProveedorVentaEstado" Association="Self.FK_ProveedorVenta_ProveedorVentaEstado">
+      <End Role="ProveedorVentaEstado" EntitySet="ProveedorVentaEstado" />
+      <End Role="ProveedorVenta" EntitySet="ProveedorVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProveedorVenta_Usuario" Association="Self.FK_ProveedorVenta_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="ProveedorVenta" EntitySet="ProveedorVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_UsuarioPerfil" Association="Self.FK_Usuario_UsuarioPerfil">
+      <End Role="UsuarioPerfil" EntitySet="UsuarioPerfil" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_UsuarioPermisoSitio" Association="Self.FK_Usuario_UsuarioPermisoSitio">
+      <End Role="UsuarioPermisoSitio" EntitySet="UsuarioPermisoSitio" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Venta_Usuario" Association="Self.FK_Venta_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Venta" EntitySet="Venta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Venta_VentaEstado" Association="Self.FK_Venta_VentaEstado">
+      <End Role="VentaEstado" EntitySet="VentaEstado" />
+      <End Role="Venta" EntitySet="Venta" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
