@@ -1,0 +1,110 @@
+﻿@model ProveedorTuTienditaPS4.Models.ViewModels.PackViewModels
+@Styles.Render("~/Dashboard/DataTable/css")
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Button Example <small>Users</small></h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>  New</button>
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    @using (Html.BeginForm("GuardarPack", "Home", FormMethod.Post, new { @class = "row form-horizontal", @id = "formNewPack" }))
+                                    {
+                                        @Html.ValidationSummary(true)
+                                        @Html.AntiForgeryToken()
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                                Email <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                @Html.TextBoxFor(c => c.Email, new { @class = "form-control col-md-7 col-xs-12" , @name = "name", @placeholder = "Email", @required = "required", @type = "text" })
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                                Price <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                @Html.TextBoxFor(c => c.price, new { @class="form-control col-md-7 col-xs-12", @name="name", @placeholder="Price" , @required="required", @type="number"})
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                                                Pack <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                @Html.TextAreaFor(c => c.description, new { @class="form-control col-md-7 col-xs-12", @placeholder = "Descripcion Pack"})
+                                            </div>
+                                        </div>
+                                    }
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <input type="submit" value="Save" class="submint btn btn-primary" />
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table id="datatable-buttons" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>idPack</th>
+                            <th>Email</th>
+                            <th>Price</th>
+                            <th>State</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>4</td>
+                            <td>erick.aguila@gmail.com</td>
+                            <td>$13.45</td>
+                            <td>Ok</td>
+                            <td style="text-align:center;"><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>pedro.gonzalez@gmail.com</td>
+                            <td>$10.45</td>
+                            <td>pending</td>
+                            <td style="text-align:center;"><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>carlos.gonzalez@gmail.com</td>
+                            <td>$5.99</td>
+                            <td>pending</td>
+                            <td style="text-align:center;"><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>felipe.venza@gmail.com</td>
+                            <td>$8.99</td>
+                            <td>Ok</td>
+                            <td style="text-align:center;"><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    @section scripts{
+        @Scripts.Render("~/Dashboard/DataTable/js")
+    }

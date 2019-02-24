@@ -8,18 +8,20 @@ using ProveedorTuTienditaPS4.Models.Entity;
 
 namespace ProveedorTuTienditaPS4.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         tutienditaps4_Entities modelo = new tutienditaps4_Entities();
 
-        public ActionResult Index()
+        public ActionResult Index(Usuario usuario)
         {
             ViewBag.Title = "Home Page";
-            
+            ViewBag.NombreUsuario = usuario.nombreUsuario;
             return View();
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Login()
         {
             LoginViewModels login = new LoginViewModels();
@@ -27,6 +29,7 @@ namespace ProveedorTuTienditaPS4.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModels model)
         {
             try
@@ -34,10 +37,15 @@ namespace ProveedorTuTienditaPS4.Controllers
                 var respuesta = modelo.Usuario.Where(c => c.emailUsuario == model.Username && c.password == model.Password).FirstOrDefault();
                 if (respuesta != null)
                 {
+                    Usuario usuario = new Usuario() {
+                        nombreUsuario = respuesta.nombreUsuario
+                    };
+
                     return View("Index");
                 }
                 else
                 {
+                    ViewBag.MensajeError = "Datos son incorrectos";
                     return View();
                 }
             }

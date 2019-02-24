@@ -524,6 +524,8 @@
     <Content Include="Content\Dasboard\vendors\nprogress\nprogress.js" />
     <Content Include="Content\Dasboard\vendors\nprogress\support\extras.css" />
     <Content Include="Content\Dasboard\vendors\nprogress\support\style.css" />
+    <Content Include="Content\img\logo-redondo.ico" />
+    <Content Include="Content\img\logo.jpg" />
     <Content Include="Content\Login\css\style.css" />
     <Content Include="Content\Login\js\index.js" />
     <Content Include="favicon.ico" />
@@ -771,6 +773,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\sweetalert.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -790,6 +793,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="assets\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
