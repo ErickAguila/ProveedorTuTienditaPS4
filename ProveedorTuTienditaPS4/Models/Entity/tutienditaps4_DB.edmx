@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="tutienditaps4_desadbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="tutienditaps4_desadbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AnunciarPago">
           <Key>
             <PropertyRef Name="idAnunciarPago" />
@@ -243,6 +243,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sp_ListarPackProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ev_admin" />
         <EntityContainer Name="tutienditaps4_desadbModelStoreContainer">
           <EntitySet Name="AnunciarPago" EntityType="Self.AnunciarPago" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pack" EntityType="Self.Pack" Schema="dbo" store:Type="Tables" />
@@ -297,8 +298,7 @@
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="tutienditaps4_desadbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -613,7 +613,16 @@
             <End Role="VentaEstado" EntitySet="VentaEstado" />
             <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
+          <FunctionImport Name="sp_ListarPackProveedor" ReturnType="Collection(tutienditaps4_desadbModel.sp_ListarPackProveedor_Result)" />
         </EntityContainer>
+        <ComplexType Name="sp_ListarPackProveedor_Result">
+          <Property Type="Int32" Name="idProveedorVenta" Nullable="false" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="USD" Nullable="true" />
+          <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="fechaCreacion" Nullable="true" />
+          <Property Type="String" Name="nombreEstado" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -750,6 +759,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_ListarPackProveedor" FunctionName="tutienditaps4_desadbModel.Store.sp_ListarPackProveedor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="tutienditaps4_desadbModel.sp_ListarPackProveedor_Result">
+                <ScalarProperty Name="idProveedorVenta" ColumnName="idProveedorVenta" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="USD" ColumnName="USD" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="nombreEstado" ColumnName="nombreEstado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -12,7 +12,7 @@ namespace ProveedorTuTienditaPS4.Models.ViewModels
         [MaxLength(50,ErrorMessageResourceName = "El campo Username tiene un máximo de 50 caracteres")]
         public string Username { get; set; }
         [Required(ErrorMessage ="El campo Password es requerido")]
-        [MaxLength(20,ErrorMessageResourceName ="El campo Password tiene un máximo de 20 caracteres")]
+        [MaxLength(50,ErrorMessageResourceName ="El campo Password tiene un máximo de 20 caracteres")]
         public string Password { get; set; }
     }
 }

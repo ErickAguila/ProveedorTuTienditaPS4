@@ -110,4 +110,3 @@ C:\Users\Erick\documents\visual studio 2015\Projects\ProveedorTuTienditaPS4\Prov
 C:\Users\Erick\documents\visual studio 2015\Projects\ProveedorTuTienditaPS4\ProveedorTuTienditaPS4\bin\es\System.Web.Http.Owin.resources.dll
 C:\Users\Erick\documents\visual studio 2015\Projects\ProveedorTuTienditaPS4\ProveedorTuTienditaPS4\obj\Debug\ProveedorTuTienditaPS4.dll
 C:\Users\Erick\documents\visual studio 2015\Projects\ProveedorTuTienditaPS4\ProveedorTuTienditaPS4\obj\Debug\ProveedorTuTienditaPS4.pdb
-C:\Users\Erick\documents\visual studio 2015\Projects\ProveedorTuTienditaPS4\ProveedorTuTienditaPS4\obj\Debug\ProveedorTuTienditaPS4.csprojResolveAssemblyReference.cache

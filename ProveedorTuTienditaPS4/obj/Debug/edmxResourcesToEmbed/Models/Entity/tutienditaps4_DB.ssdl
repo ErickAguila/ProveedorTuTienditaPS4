@@ -238,6 +238,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="sp_ListarPackProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ev_admin" />
   <EntityContainer Name="tutienditaps4_desadbModelStoreContainer">
     <EntitySet Name="AnunciarPago" EntityType="Self.AnunciarPago" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pack" EntityType="Self.Pack" Schema="dbo" store:Type="Tables" />

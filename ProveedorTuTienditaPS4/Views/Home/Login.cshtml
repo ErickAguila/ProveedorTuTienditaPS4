@@ -28,7 +28,7 @@
                 @Html.ValidationSummary(true)
                 @Html.AntiForgeryToken()
                 @Html.TextBoxFor(c => c.Username, new { @type = "email", @placeholder = "Email", @maxlength = "50", @required = "required"})
-                @Html.TextBoxFor(c => c.Password, new { @type = "password", @placeholder = "Password", @maxlength = "20" , @required = "required" })
+                @Html.TextBoxFor(c => c.Password, new { @type = "password", @placeholder = "Password", @maxlength = "50" , @required = "required" })
                 <button id="btn-login" type="submit" class="submint">Login</button>
             }
             @if (ViewBag.MensajeError != null)

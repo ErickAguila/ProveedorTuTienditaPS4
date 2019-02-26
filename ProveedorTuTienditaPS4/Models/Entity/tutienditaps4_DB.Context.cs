@@ -12,6 +12,8 @@ namespace ProveedorTuTienditaPS4.Models.Entity
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class tutienditaps4_Entities : DbContext
     {
@@ -37,5 +39,10 @@ namespace ProveedorTuTienditaPS4.Models.Entity
         public virtual DbSet<UsuarioPermisoSitio> UsuarioPermisoSitio { get; set; }
         public virtual DbSet<Venta> Venta { get; set; }
         public virtual DbSet<VentaEstado> VentaEstado { get; set; }
+    
+        public virtual ObjectResult<sp_ListarPackProveedor_Result> sp_ListarPackProveedor()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ListarPackProveedor_Result>("sp_ListarPackProveedor");
+        }
     }
 }

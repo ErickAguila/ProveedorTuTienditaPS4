@@ -311,5 +311,14 @@
       <End Role="VentaEstado" EntitySet="VentaEstado" />
       <End Role="Venta" EntitySet="Venta" />
     </AssociationSet>
+    <FunctionImport Name="sp_ListarPackProveedor" ReturnType="Collection(tutienditaps4_desadbModel.sp_ListarPackProveedor_Result)" />
   </EntityContainer>
+  <ComplexType Name="sp_ListarPackProveedor_Result">
+    <Property Type="Int32" Name="idProveedorVenta" Nullable="false" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="USD" Nullable="true" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="fechaCreacion" Nullable="true" />
+    <Property Type="String" Name="nombreEstado" Nullable="true" MaxLength="50" />
+  </ComplexType>
 </Schema>
